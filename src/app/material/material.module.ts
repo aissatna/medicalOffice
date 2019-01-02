@@ -4,13 +4,30 @@ import * as Material from '@angular/material';
 @NgModule({
   declarations: [],
   imports: [
+    CommonModule,
     Material.MatToolbarModule,
-   Material.MatCardModule,
-    CommonModule
+    Material.MatTabsModule,
+    Material.MatGridListModule,
+    Material.MatCardModule,
+    Material.MatTableModule,
+    Material.MatButtonModule,
+    Material.MatFormFieldModule,
+    Material.MatSelectModule,
+    Material.MatInputModule
+
   ],
   exports: [
+    CommonModule,
     Material.MatToolbarModule,
-    Material.MatCardModule
+    Material.MatTabsModule,
+    Material.MatGridListModule,
+    Material.MatCardModule,
+    Material.MatTableModule,
+    Material.MatButtonModule,
+    Material.MatFormFieldModule,
+    Material.MatSelectModule,
+    Material.MatInputModule
+
   ]
 })
 export class MaterialModule { }

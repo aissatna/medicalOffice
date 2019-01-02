@@ -1,6 +1,14 @@
-<section class="weather__card">
-  <!-- TODO: make the city name dynamic -->
-  <span class="city-name__text">inf1</span>
-  
-
-</section>
+<mat-card>
+  <img class="imageInf" src='{{getPhotoURL()}}' /><br>
+  <b>ID: </b>{{getId()}}<br />
+  <b>Nom: </b>{{getNom()| uppercase}}<br />
+  <b>Prenom: </b>{{getPrenom()}}<br />
+  <b>Adresse: </b>{{getAdresse()}}<br />
+  <b>List des Patients:</b><br />
+  <table >
+    <tr *ngFor="let pat of getPatients() ">
+      <th>{{getPatientInfo(pat)}}</th>
+      <th><button mat-stroked-button color="primary"(click)= "service_desaffecter(pat)">Désaffecter</button></th>
+    </tr>
+  </table>
+</mat-card>

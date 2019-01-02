@@ -1,5 +1,5 @@
 
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 
 // Cabinet imports
@@ -12,6 +12,9 @@ import { sexeEnum } from './dataInterfaces/sexe';
   providedIn: 'root'
 })
 export class CabinetMedicalService {
+  update_pat = new EventEmitter<any>();
+  update_aff = new EventEmitter<any>();
+  update_desaff = new EventEmitter<any>();
   constructor(private _http: HttpClient) { }
   // get Data from the server
   async getData(url: string): Promise<CabinetInterface> {
@@ -50,7 +53,7 @@ export class CabinetMedicalService {
           adresse: this.getAdressFrom(patXML),
         })
       );
-       // crier un tableau de couple <infirmier,patient>
+      // crier un tableau de couple <infirmier,patient>
       const affectations = patientsFromXML.map(
         (patXML, i) => {
           const visiteXML = patXML.querySelector('visite[intervenant]');
@@ -62,7 +65,7 @@ export class CabinetMedicalService {
           return { patient: patients[i], infirmier: infirmier };
 
         });
-        // Affectation des patients
+      // Affectation des patients
       affectations.forEach(({ patient: P, infirmier: I }) => {
         (I != null) ? I.patients.push(P) : cabinet.patientsNonAffectés.push(P);
       });
@@ -83,17 +86,31 @@ export class CabinetMedicalService {
       étage: (node = root.querySelector('adresse > étage')) ? node.textContent : '',
     };
   }
+  // get patients change (Affecter, Désaffecte , Ajouter)
+  getEmitPat() {
+    return this.update_pat;
+  }
+  getEmitAff() {
+    return this.update_aff;
+  }
+  getEmitDesaff() {
+    return this.update_desaff;
+  }
+  // affectation methode
+  async affecter_patient(id: string, pat: PatientInterface) {
+    await this._http.post('/affectation', {
+      infirmier: id,
+      patient: pat.numéroSécuritéSociale
+    }, { observe: 'response' }).subscribe(response => { if (response.ok) { this.update_aff.emit({ p: pat, id: id }); } });
+  }
+  // desaffectation methode
+  async desaffecter_patient(pat: PatientInterface, id) {
+    await this._http.post('/affectation', {
+      infirmier: 'none',
+      patient: pat.numéroSécuritéSociale
+    }, { observe: 'response' }).subscribe(response => { if (response.ok) { this.update_desaff.emit({ p: pat, id: id }); } });
 
-
-  // Login function
-  // logiinfirmien(s: string): Promise<any> {
-  //   console.log('Objet envoyé: ', {login: s});
-  //  return this.http.post('/', {login: s}).toPromise().then((res: Response) => {
-  //    console.log(res.status);
-  //  }
-  //  ).catch(error => {
-  //   console.log('Erreur: ', error); });
-  // }
+  }
 }
 
 

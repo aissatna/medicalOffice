@@ -1,3 +1,16 @@
-<p>
-  patient works!
-</p>
+<mat-card>
+  <b>Nom: </b>{{Nom}}<br />
+  <b>Prénom:</b>{{Prenom}}<br />
+  <b>Sexe:</b>{{Sexe}}<br />
+  <b>Naissance: </b>{{Naissance}}<br />
+  <b>Numéro Securité sociale :</b>{{NumSecu}}<br />
+  <b>Adresse: </b>{{Adresse}}<br />
+  <mat-form-field>
+    <mat-select placeholder="Choisir infirmier"[(ngModel)]="selectedValue">
+      <mat-option *ngFor="let inf of infirmiers" [value]="inf.id">
+        {{inf.nom}} : {{inf.id}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-stroked-button color="primary" (click) ="service_affecter(selectedValue)">Affecter</button>
+</mat-card>
