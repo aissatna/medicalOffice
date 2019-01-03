@@ -15,19 +15,19 @@ export class InfirmierComponent implements OnInit {
 
   ngOnInit() {
   }
-  getNom() {
+  public get Nom() {
     return this.infirmier.nom;
   }
-  getPrenom() {
+  public get Prenom() {
     return this.infirmier.prénom;
   }
-  getPhotoURL() {
+  public get PhotoURL() {
     return 'data/' + this.infirmier.photo;
   }
-  getId() {
+  public get Id() {
     return this.infirmier.id;
   }
-  getAdresse() {
+  public get Adresse() {
     return this.infirmier.adresse.numéro + ' '
       + this.infirmier.adresse.rue + ' '
       + this.infirmier.adresse.ville + ' '
@@ -35,7 +35,7 @@ export class InfirmierComponent implements OnInit {
       + this.infirmier.adresse.étage;
 
   }
-  getPatients() {
+  public get Patients() {
     return this.infirmier.patients;
   }
   getPatientInfo(patient: PatientInterface) {

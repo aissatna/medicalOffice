@@ -13,7 +13,10 @@ import * as Material from '@angular/material';
     Material.MatButtonModule,
     Material.MatFormFieldModule,
     Material.MatSelectModule,
-    Material.MatInputModule
+    Material.MatInputModule,
+    Material.MatDatepickerModule,
+    Material.MatNativeDateModule,
+    Material.MatRadioModule,
 
   ],
   exports: [
@@ -26,7 +29,11 @@ import * as Material from '@angular/material';
     Material.MatButtonModule,
     Material.MatFormFieldModule,
     Material.MatSelectModule,
-    Material.MatInputModule
+    Material.MatInputModule,
+    Material.MatDatepickerModule,
+    Material.MatNativeDateModule,
+    Material.MatRadioModule
+
 
   ]
 })

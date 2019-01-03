@@ -1,9 +1,8 @@
+import { sexeEnum } from './../dataInterfaces/sexe';
 import { CabinetMedicalService } from './../cabinet-medical.service';
-
 import { CabinetInterface } from './../dataInterfaces/cabinet';
-
 import { Component, OnInit } from '@angular/core';
-
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 
 @Component({
@@ -19,6 +18,18 @@ export class SecretaryComponent implements OnInit {
   constructor(private cabinetMedicalService: CabinetMedicalService) {
     this.initCabinet(cabinetMedicalService);
   }
+  form: FormGroup = new FormGroup({
+    nom: new FormControl('', Validators.required),
+    prenom: new FormControl(''),
+    naissance: new FormControl('', Validators.required),
+    numSecu: new FormControl('', [Validators.required, Validators.minLength(15), Validators.maxLength(15)]),
+    sexe: new FormControl(''),
+    etage: new FormControl(),
+    numRue: new FormControl('', Validators.required),
+    Rue: new FormControl('', Validators.required),
+    CP: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(5)]),
+    ville: new FormControl(''),
+  });
 
   ngOnInit() {
     this.cabinetMedicalService.getEmitPat()
@@ -55,7 +66,6 @@ export class SecretaryComponent implements OnInit {
     console.log('affecter');
     this._cms.patientsNonAffectés =
       this._cms.patientsNonAffectés.filter(p => p.numéroSécuritéSociale !== item.p.numéroSécuritéSociale);
-
     this._cms.infirmiers[this._cms.infirmiers.findIndex(e => e.id === item.id)].patients.push(item.p);
     console.log(item.id);
   }
@@ -66,6 +76,32 @@ export class SecretaryComponent implements OnInit {
     this._cms.infirmiers[i].patients = this._cms.infirmiers[i].patients.filter(e =>
       e.numéroSécuritéSociale !== item.p.numéroSécuritéSociale);
     this._cms.patientsNonAffectés.push(item.p);
+  }
+  serviceClear() {
+    console.log('clear');
+    this.form.reset();
+    this.form.setValue({
+      nom: '',
+      prenom: '',
+      naissance: '',
+      numSecu: '',
+      sexe: '',
+      etage: '',
+      numRue: '',
+      Rue: '',
+      CP: '',
+      ville: '',
+    });
+  }
+  serviceAjouter(nom: string, prenom: string,
+    numSec: string, sexe: string, date: string,
+    etage: string, numero: string, rue: string,
+     codePostal: number, ville: string) {
+       console.log(nom);
+    this.cabinetMedicalService.ajouter_patient(nom, prenom,
+      numSec, sexe, date,
+      etage, numero, rue,
+      codePostal, ville);
   }
 
 

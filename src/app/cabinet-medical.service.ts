@@ -111,6 +111,50 @@ export class CabinetMedicalService {
     }, { observe: 'response' }).subscribe(response => { if (response.ok) { this.update_desaff.emit({ p: pat, id: id }); } });
 
   }
+
+  // Ajouter un patient
+  ajouter_patient(
+    nom: string,
+    prenom: string,
+    numSec: string,
+    sexe: string,
+    date: string,
+    etage: string,
+    numero: string,
+    rue: string,
+    codePostal: number,
+    ville: string) {
+    const currentAdresse: Adresse = {
+      étage: etage,
+      numéro: numero,
+      rue: rue,
+      codePostal: codePostal,
+      ville: ville,
+    };
+
+    const current_pat: PatientInterface = {
+      prénom: prenom,
+      nom: nom,
+      sexe: sexe === 'M' ? sexeEnum.M : sexeEnum.F,
+      naissance: date,
+      numéroSécuritéSociale: numSec,
+      adresse: currentAdresse
+    };
+    this._http.post('/addPatient', {
+      patientName: nom,
+      patientForname: prenom,
+      patientNumber: numSec,
+      patientSex: sexe === 'M' ? sexeEnum.M : sexeEnum.F,
+      patientBirthday: date,
+      patientFloor: etage,
+      patientStreetNumber: numero,
+      patientStreet: rue,
+      patientPostalCode: codePostal,
+      patientCity: ville
+    }, { observe: 'response' }).subscribe(response => { if (response.ok) { this.update_pat.emit(current_pat); 
+    console.log('patient ajouter,response ==> ', response.status); } });
+
+  }
 }
 
 

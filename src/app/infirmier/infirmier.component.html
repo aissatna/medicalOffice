@@ -1,12 +1,12 @@
 <mat-card>
-  <img class="imageInf" src='{{getPhotoURL()}}' /><br>
-  <b>ID: </b>{{getId()}}<br />
-  <b>Nom: </b>{{getNom()| uppercase}}<br />
-  <b>Prenom: </b>{{getPrenom()}}<br />
-  <b>Adresse: </b>{{getAdresse()}}<br />
+  <img class="imageInf" src='{{PhotoURL}}' /><br>
+  <b>ID: </b>{{Id}}<br />
+  <b>Nom: </b>{{Nom| uppercase}}<br />
+  <b>Prenom: </b>{{Prenom}}<br />
+  <b>Adresse: </b>{{Adresse}}<br />
   <b>List des Patients:</b><br />
   <table >
-    <tr *ngFor="let pat of getPatients() ">
+    <tr *ngFor="let pat of Patients ">
       <th>{{getPatientInfo(pat)}}</th>
       <th><button mat-stroked-button color="primary"(click)= "service_desaffecter(pat)">Désaffecter</button></th>
     </tr>

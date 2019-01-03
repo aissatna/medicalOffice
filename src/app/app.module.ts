@@ -5,6 +5,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {MaterialModule} from './material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { ReactiveFormsModule } from '@angular/forms';
 // list of component
 import { AppComponent } from './app.component';
 import { SecretaryComponent } from './secretary/secretary.component';
@@ -24,7 +25,8 @@ import { PatientComponent } from './patient/patient.component';
     FormsModule,
     HttpClientModule,
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

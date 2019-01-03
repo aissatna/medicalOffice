@@ -35,9 +35,6 @@ export class PatientComponent implements OnInit {
   public get Naissance() {
     return this.patient.naissance;
   }
-  getIf() {
-    console.log(this.infirmiers);
-  }
   ngOnInit() {
   }
   service_affecter(id: string) {
