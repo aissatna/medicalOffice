@@ -1,8 +1,9 @@
-import { sexeEnum } from './../dataInterfaces/sexe';
+
 import { CabinetMedicalService } from './../cabinet-medical.service';
 import { CabinetInterface } from './../dataInterfaces/cabinet';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import * as moment from 'moment'; // parsing the date with Moment.js
 
 
 @Component({
@@ -46,8 +47,20 @@ export class SecretaryComponent implements OnInit {
     console.log(this.cms);
   }
   // get adresse cabinet
-  public get adresseCabinet() {
-    return this._cms.adresse;
+  public get adresseNumRue() {
+    return this._cms.adresse.numéro;
+  }
+  public get adresseRue() {
+    return this._cms.adresse.rue;
+  }
+  public get adresseVille() {
+    return this._cms.adresse.ville;
+  }
+  public get adresseCP() {
+    return this._cms.adresse.codePostal;
+  }
+  public get adresseEtage() {
+    return this._cms.adresse.étage;
   }
   // get infirmiers
   public get infirmiers() {
@@ -63,7 +76,6 @@ export class SecretaryComponent implements OnInit {
   }
 
   updateAff(item) {
-    console.log('affecter');
     this._cms.patientsNonAffectés =
       this._cms.patientsNonAffectés.filter(p => p.numéroSécuritéSociale !== item.p.numéroSécuritéSociale);
     this._cms.infirmiers[this._cms.infirmiers.findIndex(e => e.id === item.id)].patients.push(item.p);
@@ -71,14 +83,12 @@ export class SecretaryComponent implements OnInit {
   }
 
   updateDesaff(item) {
-    console.log('desaffecter');
     const i = this._cms.infirmiers.findIndex(e => e.id === item.id);
     this._cms.infirmiers[i].patients = this._cms.infirmiers[i].patients.filter(e =>
       e.numéroSécuritéSociale !== item.p.numéroSécuritéSociale);
     this._cms.patientsNonAffectés.push(item.p);
   }
   serviceClear() {
-    console.log('clear');
     this.form.reset();
     this.form.setValue({
       nom: '',
@@ -96,10 +106,13 @@ export class SecretaryComponent implements OnInit {
   serviceAjouter(nom: string, prenom: string,
     numSec: string, sexe: string, date: string,
     etage: string, numero: string, rue: string,
-     codePostal: number, ville: string) {
-       console.log(nom);
+    codePostal: number, ville: string) {
+    // parsing the date to format YYYY-MM-DD
+    const momentDate = new Date(date); // Replace event.value with your date value
+    const dateXML = moment(momentDate).format('YYYY-MM-DD');
+
     this.cabinetMedicalService.ajouter_patient(nom, prenom,
-      numSec, sexe, date,
+      numSec, sexe, dateXML,
       etage, numero, rue,
       codePostal, ville);
   }
