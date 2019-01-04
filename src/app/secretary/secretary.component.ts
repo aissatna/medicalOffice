@@ -1,5 +1,6 @@
-
-import { CabinetMedicalService } from './../cabinet-medical.service';
+import { InfirmierInterface } from './../dataInterfaces/infirmier';
+import { NotificationService } from './../services/notification.service';
+import { CabinetMedicalService } from '../services/cabinet-medical.service';
 import { CabinetInterface } from './../dataInterfaces/cabinet';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -16,7 +17,9 @@ export class SecretaryComponent implements OnInit {
   private _cms: CabinetInterface;
   public get cms(): CabinetInterface { return this._cms; }
 
-  constructor(private cabinetMedicalService: CabinetMedicalService) {
+  constructor(private cabinetMedicalService: CabinetMedicalService,
+    private notificationService: NotificationService) {
+
     this.initCabinet(cabinetMedicalService);
   }
   form: FormGroup = new FormGroup({
@@ -79,7 +82,7 @@ export class SecretaryComponent implements OnInit {
     this._cms.patientsNonAffectés =
       this._cms.patientsNonAffectés.filter(p => p.numéroSécuritéSociale !== item.p.numéroSécuritéSociale);
     this._cms.infirmiers[this._cms.infirmiers.findIndex(e => e.id === item.id)].patients.push(item.p);
-    console.log(item.id);
+
   }
 
   updateDesaff(item) {
@@ -115,6 +118,8 @@ export class SecretaryComponent implements OnInit {
       numSec, sexe, dateXML,
       etage, numero, rue,
       codePostal, ville);
+    this.notificationService.successService(':: Submitted successfully');
+    this.serviceClear();
   }
 
 

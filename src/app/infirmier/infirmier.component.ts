@@ -1,4 +1,4 @@
-import { CabinetMedicalService } from './../cabinet-medical.service';
+import { CabinetMedicalService } from '../services/cabinet-medical.service';
 import { InfirmierInterface } from './../dataInterfaces/infirmier';
 import { Component, OnInit, Input } from '@angular/core';
 import { PatientInterface } from '../dataInterfaces/patient';

@@ -3,15 +3,28 @@
 @import '@angular/material/prebuilt-themes/indigo-pink.css';
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
 html {
-    /* background-color: rgb(241, 235, 235); */
-    color: #555555;
-    font-family: 'Lato', 'arial', sans-serif;
-    font-size: 20px;
-    font-weight: 200;
-    text-rendering: optimizeLegibility;
+  color: #555555;
+  font-family: 'Lato', 'arial', sans-serif;
+  font-size: 20px;
+  font-weight: 200;
+  text-rendering: optimizeLegibility;
+}
+
+/* notification */
+snack-bar-container.success {
+  margin-top: 82px;
+  background-color: #5cb85c;
+  color: #fff;
+}
+
+
+snack-bar-container.notification simple-snack-bar {
+  font-size: 17px !important;
+  font-weight: bold;
 }

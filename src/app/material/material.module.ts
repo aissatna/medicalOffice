@@ -17,6 +17,7 @@ import * as Material from '@angular/material';
     Material.MatDatepickerModule,
     Material.MatNativeDateModule,
     Material.MatRadioModule,
+    Material.MatSnackBarModule,
 
   ],
   exports: [
@@ -32,7 +33,8 @@ import * as Material from '@angular/material';
     Material.MatInputModule,
     Material.MatDatepickerModule,
     Material.MatNativeDateModule,
-    Material.MatRadioModule
+    Material.MatRadioModule,
+    Material.MatSnackBarModule,
 
 
   ]

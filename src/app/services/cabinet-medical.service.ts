@@ -3,11 +3,11 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 
 // Cabinet imports
-import { CabinetInterface } from './dataInterfaces/cabinet';
-import { InfirmierInterface } from './dataInterfaces/infirmier';
-import { PatientInterface } from './dataInterfaces/patient';
-import { Adresse } from './dataInterfaces/adresse';
-import { sexeEnum } from './dataInterfaces/sexe';
+import { CabinetInterface } from '../dataInterfaces/cabinet';
+import { InfirmierInterface } from '../dataInterfaces/infirmier';
+import { PatientInterface } from '../dataInterfaces/patient';
+import { Adresse } from '../dataInterfaces/adresse';
+import { sexeEnum } from '../dataInterfaces/sexe';
 @Injectable({
   providedIn: 'root'
 })
