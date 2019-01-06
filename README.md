@@ -1,28 +1,18 @@
-# Client
+# PROJET IHM : Cabinet médical
+ Projet IHM en L3 MIAGE à l'Université Grenoble Alpes
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.4.
+# Installation
+1. clone le projet en utilisant : > $ git clone git@github.com:aissatna/cabinet-Medical.git.
+2. installez les bibliothèques de dépendance  : > $ npm install.
+4. Excutez : > $ npm start
+3. Lancer: http://localhost:4200/
 
-## Development server
+# Cabinet médical
+le projet consiste à la réalisation d'un client angular permettant l'ajout, l'affectation et la désaffectation des patients (affectation et désaffectation à des infirmiers) sur une base de données XML via un serveur nodejs fourni.
+(lien vers le serveur : https://github.com/AlexDmr/L3M-Projet)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+# points importants de projet
+- Gestion de la communication entre le client et le serveur a travers des requêtes http.
+- Gestion de la communication entre les composants (passage d'information).
+- Utilisation d'angular Material (MatGridList,MatDatepicker,MatSnackBar ... ).
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-# cabinet-Medical
