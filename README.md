@@ -16,3 +16,8 @@ le projet consiste à la réalisation d'un client angular permettant l'ajout, l'
 - Gestion de la communication entre les composants (passage d'information).
 - Utilisation d'angular Material (MatGridList,MatDatepicker,MatSnackBar ... ).
 
+# Equipe 
+- Abel  MUWALA
+- Nabil AISSAT
+
+
