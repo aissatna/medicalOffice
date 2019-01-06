@@ -11,7 +11,7 @@
 le projet consiste à la réalisation d'un client angular permettant l'ajout, l'affectation et la désaffectation des patients (affectation et désaffectation à des infirmiers) sur une base de données XML via un serveur nodejs fourni.
 (lien vers le serveur : https://github.com/AlexDmr/L3M-Projet)
 
-# points importants de projet
+# Points importants de projet
 - Gestion de la communication entre le client et le serveur a travers des requêtes http.
 - Gestion de la communication entre les composants (passage d'information).
 - Utilisation d'angular Material (MatGridList,MatDatepicker,MatSnackBar ... ).
