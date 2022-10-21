@@ -2,7 +2,7 @@
  Projet IHM en L3 MIAGE à l'Université Grenoble Alpes
 
 # Installation
-1. clone le projet en utilisant : > $ git clone https://github.com/aissatna/cabinet-Medical.
+1. clone le projet en utilisant : > $ git clone git@github.com:aissatna/medicalOffice.git.
 2. installez les bibliothèques de dépendance  : > $ npm install.
 4. Excutez : > $ npm start
 3. Lancez: http://localhost:4200/
